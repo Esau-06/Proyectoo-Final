@@ -13,7 +13,7 @@ public class Principal {
 
             System.out.println("GESTION PRESTAMO EQUIPOS ELECTRONICOS SAN JUAN DE DIOS");
             System.out.println("1. Estudiantes de Ingenieria");
-            System.out.println("2. Estudiantes de Diseno");
+            System.out.println("2. Estudiantes de Diseño");
             System.out.println("3. Imprimir inventario total");
             System.out.println("4. Salir del programa");
             System.out.println("Digite una opcion");
@@ -70,11 +70,11 @@ public class Principal {
 
                 case 2:
 
-                    int opcionDiseno = -1;
+                    int opcionDiseño = -1;
 
-                    while (opcionDiseno != 4) {
+                    while (opcionDiseño != 4) {
 
-                        System.out.println("MENU ESTUDIANTES DE DISENO");
+                        System.out.println("MENU ESTUDIANTES DE Diseño");
                         System.out.println("0. Registrar prestamo");
                         System.out.println("1. Modificar prestamo");
                         System.out.println("2. Devolucion de equipo");
@@ -82,24 +82,24 @@ public class Principal {
                         System.out.println("4. Volver al menu principal");
                         System.out.println("Digite una opcion");
 
-                        opcionDiseno = sc.nextInt();
+                        opcionDiseño = sc.nextInt();
 
-                        switch (opcionDiseno) {
+                        switch (opcionDiseño) {
 
                             case 0:
-                                m.RegistrarPrestamoDiseno();
+                                m.RegistrarPrestamoDiseño();
                                 break;
 
                             case 1:
-                                m.ModificarPrestamoDiseno();
+                                m.ModificarPrestamoDiseño();
                                 break;
 
                             case 2:
-                                m.DevolverEquipoDiseno();
+                                m.DevolverEquipoDiseño();
                                 break;
 
                             case 3:
-                                m.BuscarEquipoDiseno();
+                                m.BuscarEquipoDiseño();
                                 break;
 
                             case 4:
