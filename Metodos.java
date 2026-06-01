@@ -4,6 +4,7 @@ import java.util.LinkedList;
 public class Metodos {
 
     Scanner sc = new Scanner(System.in);
+    Validaciones v = new Validaciones();
 
     LinkedList vector_ingenieros = new LinkedList();
     LinkedList vector_diseñadores = new LinkedList();
@@ -18,7 +19,7 @@ public class Metodos {
         System.out.println("REGISTRAR PRESTAMO INGENIERIA");
 
         System.out.println("Ingrese cedula del estudiante");
-        e.setCedula(sc.next());
+        e.setCedula(v.ValidarCedula(sc));
 
         if (ExisteCedulaIngenieria(e.getCedula())) {
             System.out.println("El estudiante ya tiene un equipo registrado");
@@ -26,22 +27,22 @@ public class Metodos {
         }
 
         System.out.println("Ingrese nombre del estudiante");
-        e.setNombre(sc.next());
+        e.setNombre(v.ValidarTexto(sc));
 
         System.out.println("Ingrese apellido del estudiante");
-        e.setApellido(sc.next());
+        e.setApellido(v.ValidarTexto(sc));
 
         System.out.println("Ingrese telefono del estudiante");
-        e.setTelefono(sc.next());
+        e.setTelefono(v.ValidarTelefono(sc));
 
         System.out.println("Ingrese numero de semestre");
-        e.setNumeroSemestre(sc.nextInt());
+        e.setNumeroSemestre(v.ValidarEnteroRango(sc, 1, 10));
 
         System.out.println("Ingrese promedio acumulado");
-        e.setPromedioAcumulado(sc.nextFloat());
+        e.setPromedioAcumulado(v.ValidarDecimalRango(sc, 0, 5));
 
         System.out.println("Ingrese serial del computador");
-        c.setSerial(sc.next());
+        c.setSerial(v.ValidarSerialTexto(sc));
 
         if (ExisteSerialIngenieria(c.getSerial())) {
             System.out.println("El serial del computador ya esta registrado");
@@ -51,19 +52,48 @@ public class Metodos {
         e.setSerialEquipo(c.getSerial());
 
         System.out.println("Ingrese marca del computador");
-        c.setMarca(sc.next());
+        c.setMarca(v.ValidarTexto(sc));
 
         System.out.println("Ingrese tamaño del computador");
-        c.setTamano(sc.nextFloat());
+        c.setTamano(v.ValidarDecimalRango(sc, 1, 30));
 
         System.out.println("Ingrese precio del computador");
-        c.setPrecio(sc.nextFloat());
+        c.setPrecio(v.ValidarDecimalRango(sc, 1, 10000000));
 
-        System.out.println("Ingrese sistema operativo");
-        c.setSistemaOperativo(sc.next());
+        System.out.println("Seleccione sistema operativo");
+        System.out.println("1. Windows 7");
+        System.out.println("2. Windows 10");
+        System.out.println("3. Windows 11");
+        int opcionSistema = v.ValidarEnteroRango(sc, 1, 3);
 
-        System.out.println("Ingrese procesador");
-        c.setProcesador(sc.next());
+        switch (opcionSistema) {
+            case 1:
+                c.setSistemaOperativo("Windows7");
+                break;
+
+            case 2:
+                c.setSistemaOperativo("Windows10");
+                break;
+
+            case 3:
+                c.setSistemaOperativo("Windows11");
+                break;
+        }
+
+        System.out.println("Seleccione procesador");
+        System.out.println("1. AMD Ryzen");
+        System.out.println("2. Intel Core i5");
+        int opcionProcesador = v.ValidarEnteroRango(sc, 1, 2);
+
+        switch (opcionProcesador) {
+            case 1:
+                c.setProcesador("AMDRyzen");
+                break;
+
+            case 2:
+                c.setProcesador("IntelCorei5");
+                break;
+        }
 
         vector_ingenieros.add(e);
         vector_portatil.add(c);
@@ -79,7 +109,7 @@ public class Metodos {
         System.out.println("REGISTRAR PRESTAMO DISEÑO");
 
         System.out.println("Ingrese cedula del estudiante");
-        e.setCedula(sc.next());
+        e.setCedula(v.ValidarCedula(sc));
 
         if (ExisteCedulaDiseño(e.getCedula())) {
             System.out.println("El estudiante ya tiene un equipo registrado");
@@ -87,22 +117,34 @@ public class Metodos {
         }
 
         System.out.println("Ingrese nombre del estudiante");
-        e.setNombre(sc.next());
+        e.setNombre(v.ValidarTexto(sc));
 
         System.out.println("Ingrese apellido del estudiante");
-        e.setApellido(sc.next());
+        e.setApellido(v.ValidarTexto(sc));
 
         System.out.println("Ingrese telefono del estudiante");
-        e.setTelefono(sc.next());
+        e.setTelefono(v.ValidarTelefono(sc));
 
-        System.out.println("Ingrese modalidad de estudio");
-        e.setModalidadEstudio(sc.next());
+        System.out.println("Seleccione modalidad de estudio");
+        System.out.println("1. Virtual");
+        System.out.println("2. Presencial");
+        int opcionModalidad = v.ValidarEnteroRango(sc, 1, 2);
+
+        switch (opcionModalidad) {
+            case 1:
+                e.setModalidadEstudio("Virtual");
+                break;
+
+            case 2:
+                e.setModalidadEstudio("Presencial");
+                break;
+        }
 
         System.out.println("Ingrese cantidad de asignaturas");
-        e.setCantidadAsignaturas(sc.nextInt());
+        e.setCantidadAsignaturas(v.ValidarEnteroRango(sc, 1, 10));
 
         System.out.println("Ingrese serial de la tableta");
-        e.setSerialEquipo(sc.nextInt());
+        e.setSerialEquipo(v.ValidarSerialNumerico(sc));
 
         if (ExisteSerialDiseño(e.getSerialEquipo())) {
             System.out.println("El serial de la tableta ya esta registrado");
@@ -112,19 +154,36 @@ public class Metodos {
         t.setSerial(e.getSerialEquipo() + "");
 
         System.out.println("Ingrese marca de la tableta");
-        t.setMarca(sc.next());
+        t.setMarca(v.ValidarTexto(sc));
 
         System.out.println("Ingrese tamaño de la tableta");
-        t.setTamano(sc.nextFloat());
+        t.setTamano(v.ValidarDecimalRango(sc, 1, 30));
 
         System.out.println("Ingrese precio de la tableta");
-        t.setPrecio(sc.nextFloat());
+        t.setPrecio(v.ValidarDecimalRango(sc, 1, 10000000));
 
-        System.out.println("Ingrese almacenamiento");
-        t.setAlmacenamiento(sc.next());
+        System.out.println("Seleccione almacenamiento");
+        System.out.println("1. 256 GB");
+        System.out.println("2. 512 GB");
+        System.out.println("3. 1 TB");
+        int opcionAlmacenamiento = v.ValidarEnteroRango(sc, 1, 3);
+
+        switch (opcionAlmacenamiento) {
+            case 1:
+                t.setAlmacenamiento("256GB");
+                break;
+
+            case 2:
+                t.setAlmacenamiento("512GB");
+                break;
+
+            case 3:
+                t.setAlmacenamiento("1TB");
+                break;
+        }
 
         System.out.println("Ingrese peso de la tableta");
-        t.setPeso(sc.nextFloat());
+        t.setPeso(v.ValidarDecimalRango(sc, 1, 20));
 
         vector_diseñadores.add(e);
         vector_tableta.add(t);
@@ -137,7 +196,7 @@ public class Metodos {
         System.out.println("MODIFICAR PRESTAMO INGENIERIA");
 
         System.out.println("Ingrese cedula del estudiante");
-        String cedula = sc.next();
+        String cedula = v.ValidarCedula(sc);
 
         for (int i = 0; i < vector_ingenieros.size(); i++) {
 
@@ -156,41 +215,38 @@ public class Metodos {
                     System.out.println("4. Numero de semestre");
                     System.out.println("5. Promedio acumulado");
                     System.out.println("6. Salir");
-                    opcion = sc.nextInt();
+
+                    opcion = v.ValidarEnteroRango(sc, 1, 6);
 
                     switch (opcion) {
 
                         case 1:
                             System.out.println("Ingrese nuevo nombre");
-                            e.setNombre(sc.next());
+                            e.setNombre(v.ValidarTexto(sc));
                             break;
 
                         case 2:
                             System.out.println("Ingrese nuevo apellido");
-                            e.setApellido(sc.next());
+                            e.setApellido(v.ValidarTexto(sc));
                             break;
 
                         case 3:
                             System.out.println("Ingrese nuevo telefono");
-                            e.setTelefono(sc.next());
+                            e.setTelefono(v.ValidarTelefono(sc));
                             break;
 
                         case 4:
                             System.out.println("Ingrese nuevo numero de semestre");
-                            e.setNumeroSemestre(sc.nextInt());
+                            e.setNumeroSemestre(v.ValidarEnteroRango(sc, 1, 10));
                             break;
 
                         case 5:
                             System.out.println("Ingrese nuevo promedio acumulado");
-                            e.setPromedioAcumulado(sc.nextFloat());
+                            e.setPromedioAcumulado(v.ValidarDecimalRango(sc, 0, 5));
                             break;
 
                         case 6:
                             System.out.println("Saliendo de modificar");
-                            break;
-
-                        default:
-                            System.out.println("Opcion incorrecta");
                             break;
                     }
                 }
@@ -209,7 +265,7 @@ public class Metodos {
         System.out.println("MODIFICAR PRESTAMO DISEÑO");
 
         System.out.println("Ingrese cedula del estudiante");
-        String cedula = sc.next();
+        String cedula = v.ValidarCedula(sc);
 
         for (int i = 0; i < vector_diseñadores.size(); i++) {
 
@@ -228,41 +284,50 @@ public class Metodos {
                     System.out.println("4. Modalidad de estudio");
                     System.out.println("5. Cantidad de asignaturas");
                     System.out.println("6. Salir");
-                    opcion = sc.nextInt();
+
+                    opcion = v.ValidarEnteroRango(sc, 1, 6);
 
                     switch (opcion) {
 
                         case 1:
                             System.out.println("Ingrese nuevo nombre");
-                            e.setNombre(sc.next());
+                            e.setNombre(v.ValidarTexto(sc));
                             break;
 
                         case 2:
                             System.out.println("Ingrese nuevo apellido");
-                            e.setApellido(sc.next());
+                            e.setApellido(v.ValidarTexto(sc));
                             break;
 
                         case 3:
                             System.out.println("Ingrese nuevo telefono");
-                            e.setTelefono(sc.next());
+                            e.setTelefono(v.ValidarTelefono(sc));
                             break;
 
                         case 4:
-                            System.out.println("Ingrese nueva modalidad de estudio");
-                            e.setModalidadEstudio(sc.next());
+                            System.out.println("Seleccione nueva modalidad");
+                            System.out.println("1. Virtual");
+                            System.out.println("2. Presencial");
+                            int opcionModalidad = v.ValidarEnteroRango(sc, 1, 2);
+
+                            switch (opcionModalidad) {
+                                case 1:
+                                    e.setModalidadEstudio("Virtual");
+                                    break;
+
+                                case 2:
+                                    e.setModalidadEstudio("Presencial");
+                                    break;
+                            }
                             break;
 
                         case 5:
                             System.out.println("Ingrese nueva cantidad de asignaturas");
-                            e.setCantidadAsignaturas(sc.nextInt());
+                            e.setCantidadAsignaturas(v.ValidarEnteroRango(sc, 1, 10));
                             break;
 
                         case 6:
                             System.out.println("Saliendo de modificar");
-                            break;
-
-                        default:
-                            System.out.println("Opcion incorrecta");
                             break;
                     }
                 }
@@ -281,7 +346,7 @@ public class Metodos {
         System.out.println("DEVOLUCION EQUIPO INGENIERIA");
 
         System.out.println("Ingrese cedula del estudiante");
-        String cedula = sc.next();
+        String cedula = v.ValidarCedula(sc);
 
         for (int i = 0; i < vector_ingenieros.size(); i++) {
 
@@ -316,7 +381,7 @@ public class Metodos {
         System.out.println("DEVOLUCION EQUIPO DISEÑO");
 
         System.out.println("Ingrese cedula del estudiante");
-        String cedula = sc.next();
+        String cedula = v.ValidarCedula(sc);
 
         for (int i = 0; i < vector_diseñadores.size(); i++) {
 
@@ -353,22 +418,19 @@ public class Metodos {
         System.out.println("BUSCAR EQUIPO INGENIERIA");
         System.out.println("1. Buscar por cedula");
         System.out.println("2. Buscar por serial");
-        opcion = sc.nextInt();
+
+        opcion = v.ValidarEnteroRango(sc, 1, 2);
 
         switch (opcion) {
 
             case 1:
                 System.out.println("Ingrese cedula");
-                BuscarEquipoIngenieria(sc.next());
+                BuscarEquipoIngenieria(v.ValidarCedula(sc));
                 break;
 
             case 2:
                 System.out.println("Ingrese serial");
-                BuscarEquipoIngenieria(sc.next(), 1);
-                break;
-
-            default:
-                System.out.println("Opcion incorrecta");
+                BuscarEquipoIngenieria(v.ValidarSerialTexto(sc), 1);
                 break;
         }
     }
@@ -396,7 +458,7 @@ public class Metodos {
         System.out.println("No se encontro estudiante con esa cedula");
     }
 
-    public void BuscarEquipoIngenieria(String serial, int opcion) {
+    public void BuscarEquipoIngenieria(String serial, int opcionBusqueda) {
 
         for (int i = 0; i < vector_portatil.size(); i++) {
 
@@ -425,22 +487,19 @@ public class Metodos {
         System.out.println("BUSCAR EQUIPO DISEÑO");
         System.out.println("1. Buscar por cedula");
         System.out.println("2. Buscar por serial");
-        opcion = sc.nextInt();
+
+        opcion = v.ValidarEnteroRango(sc, 1, 2);
 
         switch (opcion) {
 
             case 1:
                 System.out.println("Ingrese cedula");
-                BuscarEquipoDiseño(sc.next());
+                BuscarEquipoDiseño(v.ValidarCedula(sc));
                 break;
 
             case 2:
                 System.out.println("Ingrese serial");
-                BuscarEquipoDiseño(sc.nextInt());
-                break;
-
-            default:
-                System.out.println("Opcion incorrecta");
+                BuscarEquipoDiseño(v.ValidarSerialNumerico(sc));
                 break;
         }
     }
@@ -495,6 +554,7 @@ public class Metodos {
         System.out.println("INVENTARIO TOTAL");
 
         System.out.println("ESTUDIANTES DE INGENIERIA");
+
         for (int i = 0; i < vector_ingenieros.size(); i++) {
 
             EstudianteIngenieria e = (EstudianteIngenieria) vector_ingenieros.get(i);
@@ -510,6 +570,7 @@ public class Metodos {
         }
 
         System.out.println("COMPUTADORES PORTATILES");
+
         for (int i = 0; i < vector_portatil.size(); i++) {
 
             ComputadorPortatil c = (ComputadorPortatil) vector_portatil.get(i);
@@ -524,6 +585,7 @@ public class Metodos {
         }
 
         System.out.println("ESTUDIANTES DE DISEÑO");
+
         for (int i = 0; i < vector_diseñadores.size(); i++) {
 
             EstudianteDiseño e = (EstudianteDiseño) vector_diseñadores.get(i);
@@ -539,6 +601,7 @@ public class Metodos {
         }
 
         System.out.println("TABLETAS GRAFICAS");
+
         for (int i = 0; i < vector_tableta.size(); i++) {
 
             TabletaGrafica t = (TabletaGrafica) vector_tableta.get(i);

@@ -6,6 +6,7 @@ public class Principal {
 
         Scanner sc = new Scanner(System.in);
         Metodos m = new Metodos();
+        Validaciones v = new Validaciones();
 
         int opcion = 0;
 
@@ -18,7 +19,7 @@ public class Principal {
             System.out.println("4. Salir del programa");
             System.out.println("Digite una opcion");
 
-            opcion = sc.nextInt();
+            opcion = v.ValidarEnteroRango(sc, 1, 4);
 
             switch (opcion) {
 
@@ -36,7 +37,7 @@ public class Principal {
                         System.out.println("4. Volver al menu principal");
                         System.out.println("Digite una opcion");
 
-                        opcionIngenieria = sc.nextInt();
+                        opcionIngenieria = v.ValidarEnteroRango(sc, 0, 4);
 
                         switch (opcionIngenieria) {
 
@@ -74,7 +75,7 @@ public class Principal {
 
                     while (opcionDiseño != 4) {
 
-                        System.out.println("MENU ESTUDIANTES DE Diseño");
+                        System.out.println("MENU ESTUDIANTES DE DISEÑO");
                         System.out.println("0. Registrar prestamo");
                         System.out.println("1. Modificar prestamo");
                         System.out.println("2. Devolucion de equipo");
@@ -82,7 +83,7 @@ public class Principal {
                         System.out.println("4. Volver al menu principal");
                         System.out.println("Digite una opcion");
 
-                        opcionDiseño = sc.nextInt();
+                        opcionDiseño = v.ValidarEnteroRango(sc, 0, 4);
 
                         switch (opcionDiseño) {
 
