@@ -6,7 +6,6 @@ public class Principal {
 
         Scanner sc = new Scanner(System.in);
         Metodos m = new Metodos();
-        Validaciones v = new Validaciones();
 
         int opcion = 0;
 
@@ -14,12 +13,12 @@ public class Principal {
 
             System.out.println("GESTION PRESTAMO EQUIPOS ELECTRONICOS SAN JUAN DE DIOS");
             System.out.println("1. Estudiantes de Ingenieria");
-            System.out.println("2. Estudiantes de Diseño");
+            System.out.println("2. Estudiantes de Diseno");
             System.out.println("3. Imprimir inventario total");
             System.out.println("4. Salir del programa");
             System.out.println("Digite una opcion");
 
-            opcion = v.ValidarEntero(sc);
+            opcion = sc.nextInt();
 
             switch (opcion) {
 
@@ -37,7 +36,7 @@ public class Principal {
                         System.out.println("4. Volver al menu principal");
                         System.out.println("Digite una opcion");
 
-                        opcionIngenieria = v.ValidarEntero(sc);
+                        opcionIngenieria = sc.nextInt();
 
                         switch (opcionIngenieria) {
 
@@ -71,11 +70,11 @@ public class Principal {
 
                 case 2:
 
-                    int opcionDiseño = -1;
+                    int opcionDiseno = -1;
 
-                    while (opcionDiseño != 4) {
+                    while (opcionDiseno != 4) {
 
-                        System.out.println("MENU ESTUDIANTES DE DISEÑO");
+                        System.out.println("MENU ESTUDIANTES DE DISENO");
                         System.out.println("0. Registrar prestamo");
                         System.out.println("1. Modificar prestamo");
                         System.out.println("2. Devolucion de equipo");
@@ -83,24 +82,24 @@ public class Principal {
                         System.out.println("4. Volver al menu principal");
                         System.out.println("Digite una opcion");
 
-                        opcionDiseño = v.ValidarEntero(sc);
+                        opcionDiseno = sc.nextInt();
 
-                        switch (opcionDiseño) {
+                        switch (opcionDiseno) {
 
                             case 0:
-                                m.RegistrarPrestamoDiseño();
+                                m.RegistrarPrestamoDiseno();
                                 break;
 
                             case 1:
-                                m.ModificarPrestamoDiseño();
+                                m.ModificarPrestamoDiseno();
                                 break;
 
                             case 2:
-                                m.DevolverEquipoDiseño();
+                                m.DevolverEquipoDiseno();
                                 break;
 
                             case 3:
-                                m.BuscarEquipoDiseño();
+                                m.BuscarEquipoDiseno();
                                 break;
 
                             case 4:
