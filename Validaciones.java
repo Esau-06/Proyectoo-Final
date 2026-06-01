@@ -144,16 +144,22 @@ public class Validaciones {
 
     public boolean EsTexto(String dato) {
 
-        for (int i = 0; i < dato.length(); i++) {
+    for (int i = 0; i < dato.length(); i++) {
 
-            char letra = dato.charAt(i);
+        char letra = dato.charAt(i);
 
-           if (!((letra >= 'a' && letra <= 'z') || (letra >= 'A' && letra <= 'Z') || letra == 'ñ' || letra == 'Ñ' || letra == 'á' || letra == 'é' || letra == 'í' || letra == 'ó' || letra == 'ú' || letra == 'Á' || letra == 'É' || letra == 'Í' || letra == 'Ó' || letra == 'Ú')) {
-            }
+        if (!((letra >= 'a' && letra <= 'z') || 
+              (letra >= 'A' && letra <= 'Z') || 
+              letra == 'ñ' || letra == 'Ñ' || 
+              letra == 'á' || letra == 'é' || letra == 'í' || letra == 'ó' || letra == 'ú' || 
+              letra == 'Á' || letra == 'É' || letra == 'Í' || letra == 'Ó' || letra == 'Ú')) {
+            return false;
         }
-
-        return true;
     }
+
+    return true;
+}
+
 
     public boolean EsAlfanumerico(String dato) {
 
