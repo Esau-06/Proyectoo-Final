@@ -27,37 +27,37 @@ public class Principal {
 
                     int opcionIngenieria = 0;
 
-                    while (opcionIngenieria != 4) {
+                    while (opcionIngenieria != 5) {
 
                         System.out.println("MENU ESTUDIANTES DE INGENIERIA");
-                        System.out.println("0. Registrar prestamo");
-                        System.out.println("1. Modificar prestamo");
-                        System.out.println("2. Devolucion de equipo");
-                        System.out.println("3. Buscar equipo");
-                        System.out.println("4. Volver al menu principal");
+                        System.out.println("1. Registrar prestamo");
+                        System.out.println("2. Modificar prestamo");
+                        System.out.println("3. Devolucion de equipo");
+                        System.out.println("4. Buscar equipo");
+                        System.out.println("5. Volver al menu principal");
                         System.out.println("Digite una opcion");
 
-                        opcionIngenieria = v.ValidarEnteroRango(sc, 0, 4);
+                        opcionIngenieria = v.ValidarEnteroRango(sc, 1, 5);
 
                         switch (opcionIngenieria) {
 
-                            case 0:
+                            case 1:
                                 m.RegistrarPrestamoIngenieria();
                                 break;
 
-                            case 1:
+                            case 2:
                                 m.ModificarPrestamoIngenieria();
                                 break;
 
-                            case 2:
+                            case 3:
                                 m.DevolverEquipoIngenieria();
                                 break;
 
-                            case 3:
+                            case 4:
                                 m.BuscarEquipoIngenieria();
                                 break;
 
-                            case 4:
+                            case 5:
                                 System.out.println("Volviendo al menu principal");
                                 break;
 
@@ -73,37 +73,37 @@ public class Principal {
 
                     int opcionDiseño = 0;
 
-                    while (opcionDiseño != 4) {
+                    while (opcionDiseño != 5) {
 
                         System.out.println("MENU ESTUDIANTES DE DISEÑO");
-                        System.out.println("0. Registrar prestamo");
-                        System.out.println("1. Modificar prestamo");
-                        System.out.println("2. Devolucion de equipo");
-                        System.out.println("3. Buscar equipo");
-                        System.out.println("4. Volver al menu principal");
+                        System.out.println("1. Registrar prestamo");
+                        System.out.println("2. Modificar prestamo");
+                        System.out.println("3. Devolucion de equipo");
+                        System.out.println("4. Buscar equipo");
+                        System.out.println("5. Volver al menu principal");
                         System.out.println("Digite una opcion");
 
-                        opcionDiseño = v.ValidarEnteroRango(sc, 0, 4);
+                        opcionDiseño = v.ValidarEnteroRango(sc, 1, 5);
 
                         switch (opcionDiseño) {
 
-                            case 0:
+                            case 1:
                                 m.RegistrarPrestamoDiseño();
                                 break;
 
-                            case 1:
+                            case 2:
                                 m.ModificarPrestamoDiseño();
                                 break;
 
-                            case 2:
+                            case 3:
                                 m.DevolverEquipoDiseño();
                                 break;
 
-                            case 3:
+                            case 4:
                                 m.BuscarEquipoDiseño();
                                 break;
 
-                            case 4:
+                            case 5:
                                 System.out.println("Volviendo al menu principal");
                                 break;
 
