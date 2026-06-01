@@ -4,32 +4,32 @@ public class Metodos {
         System.out.println("Registrar prestamo ingenieria");
     }
 
-    public void RegistrarPrestamoDiseño() {
-        System.out.println("Registrar prestamo diseño");
+    public void RegistrarPrestamoDiseno() {
+        System.out.println("Registrar prestamo diseno");
     }
 
     public void ModificarPrestamoIngenieria() {
         System.out.println("Modificar prestamo ingenieria");
     }
 
-    public void ModificarPrestamoDiseño() {
-        System.out.println("Modificar prestamo diseño");
+    public void ModificarPrestamoDiseno() {
+        System.out.println("Modificar prestamo diseno");
     }
 
     public void DevolverEquipoIngenieria() {
         System.out.println("Devolucion de equipo ingenieria");
     }
 
-    public void DevolverEquipoDiseño() {
-        System.out.println("Devolucion de equipo diseño");
+    public void DevolverEquipoDiseno() {
+        System.out.println("Devolucion de equipo diseno");
     }
 
     public void BuscarEquipoIngenieria() {
         System.out.println("Buscar equipo ingenieria");
     }
 
-    public void BuscarEquipoDiseño() {
-        System.out.println("Buscar equipo diseño");
+    public void BuscarEquipoDiseno() {
+        System.out.println("Buscar equipo diseno");
     }
 
     public void ImprimirInventarioTotal() {
