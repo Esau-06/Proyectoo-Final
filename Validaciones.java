@@ -148,10 +148,10 @@ public class Validaciones {
 
         char letra = dato.charAt(i);
 
-        if (!((letra >= 'a' && letra <= 'z') || 
-              (letra >= 'A' && letra <= 'Z') || 
-              letra == 'ñ' || letra == 'Ñ' || 
-              letra == 'á' || letra == 'é' || letra == 'í' || letra == 'ó' || letra == 'ú' || 
+        if (!((letra >= 'a' && letra <= 'z') ||
+              (letra >= 'A' && letra <= 'Z') ||
+              letra == 'ñ' || letra == 'Ñ' ||
+              letra == 'á' || letra == 'é' || letra == 'í' || letra == 'ó' || letra == 'ú' ||
               letra == 'Á' || letra == 'É' || letra == 'Í' || letra == 'Ó' || letra == 'Ú')) {
             return false;
         }
