@@ -24,7 +24,7 @@ public class Principal {
 
                 case 1:
 
-                    int opcionIngenieria = -1;
+                    int opcionIngenieria = 0;
 
                     while (opcionIngenieria != 4) {
 
@@ -70,7 +70,7 @@ public class Principal {
 
                 case 2:
 
-                    int opcionDiseño = -1;
+                    int opcionDiseño = 0;
 
                     while (opcionDiseño != 4) {
 
