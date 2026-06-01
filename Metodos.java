@@ -20,6 +20,11 @@ public class Metodos {
         System.out.println("Ingrese cedula del estudiante");
         e.setCedula(sc.next());
 
+        if (ExisteCedulaIngenieria(e.getCedula())) {
+            System.out.println("El estudiante ya tiene un equipo registrado");
+            return;
+        }
+
         System.out.println("Ingrese nombre del estudiante");
         e.setNombre(sc.next());
 
@@ -37,6 +42,11 @@ public class Metodos {
 
         System.out.println("Ingrese serial del computador");
         c.setSerial(sc.next());
+
+        if (ExisteSerialIngenieria(c.getSerial())) {
+            System.out.println("El serial del computador ya esta registrado");
+            return;
+        }
 
         e.setSerialEquipo(c.getSerial());
 
@@ -59,8 +69,6 @@ public class Metodos {
         vector_portatil.add(c);
 
         System.out.println("Prestamo de ingenieria registrado correctamente");
-        System.out.println("Total estudiantes ingenieria registrados: " + vector_ingenieros.size());
-        System.out.println("Total computadores registrados: " + vector_portatil.size());
     }
 
     public void RegistrarPrestamoDiseño() {
@@ -72,6 +80,11 @@ public class Metodos {
 
         System.out.println("Ingrese cedula del estudiante");
         e.setCedula(sc.next());
+
+        if (ExisteCedulaDiseño(e.getCedula())) {
+            System.out.println("El estudiante ya tiene un equipo registrado");
+            return;
+        }
 
         System.out.println("Ingrese nombre del estudiante");
         e.setNombre(sc.next());
@@ -90,6 +103,11 @@ public class Metodos {
 
         System.out.println("Ingrese serial de la tableta");
         e.setSerialEquipo(sc.nextInt());
+
+        if (ExisteSerialDiseño(e.getSerialEquipo())) {
+            System.out.println("El serial de la tableta ya esta registrado");
+            return;
+        }
 
         t.setSerial(e.getSerialEquipo() + "");
 
@@ -112,8 +130,6 @@ public class Metodos {
         vector_tableta.add(t);
 
         System.out.println("Prestamo de diseño registrado correctamente");
-        System.out.println("Total estudiantes diseño registrados: " + vector_diseñadores.size());
-        System.out.println("Total tabletas registradas: " + vector_tableta.size());
     }
 
     public void ModificarPrestamoIngenieria() {
@@ -147,31 +163,26 @@ public class Metodos {
                         case 1:
                             System.out.println("Ingrese nuevo nombre");
                             e.setNombre(sc.next());
-                            System.out.println("Nombre modificado correctamente");
                             break;
 
                         case 2:
                             System.out.println("Ingrese nuevo apellido");
                             e.setApellido(sc.next());
-                            System.out.println("Apellido modificado correctamente");
                             break;
 
                         case 3:
                             System.out.println("Ingrese nuevo telefono");
                             e.setTelefono(sc.next());
-                            System.out.println("Telefono modificado correctamente");
                             break;
 
                         case 4:
                             System.out.println("Ingrese nuevo numero de semestre");
                             e.setNumeroSemestre(sc.nextInt());
-                            System.out.println("Semestre modificado correctamente");
                             break;
 
                         case 5:
                             System.out.println("Ingrese nuevo promedio acumulado");
                             e.setPromedioAcumulado(sc.nextFloat());
-                            System.out.println("Promedio modificado correctamente");
                             break;
 
                         case 6:
@@ -184,6 +195,7 @@ public class Metodos {
                     }
                 }
 
+                System.out.println("Registro modificado correctamente");
                 System.out.println("La cedula y el serial no se modifican");
                 return;
             }
@@ -223,31 +235,26 @@ public class Metodos {
                         case 1:
                             System.out.println("Ingrese nuevo nombre");
                             e.setNombre(sc.next());
-                            System.out.println("Nombre modificado correctamente");
                             break;
 
                         case 2:
                             System.out.println("Ingrese nuevo apellido");
                             e.setApellido(sc.next());
-                            System.out.println("Apellido modificado correctamente");
                             break;
 
                         case 3:
                             System.out.println("Ingrese nuevo telefono");
                             e.setTelefono(sc.next());
-                            System.out.println("Telefono modificado correctamente");
                             break;
 
                         case 4:
                             System.out.println("Ingrese nueva modalidad de estudio");
                             e.setModalidadEstudio(sc.next());
-                            System.out.println("Modalidad modificada correctamente");
                             break;
 
                         case 5:
                             System.out.println("Ingrese nueva cantidad de asignaturas");
                             e.setCantidadAsignaturas(sc.nextInt());
-                            System.out.println("Cantidad de asignaturas modificada correctamente");
                             break;
 
                         case 6:
@@ -260,6 +267,7 @@ public class Metodos {
                     }
                 }
 
+                System.out.println("Registro modificado correctamente");
                 System.out.println("La cedula y el serial no se modifican");
                 return;
             }
@@ -296,8 +304,6 @@ public class Metodos {
                 }
 
                 System.out.println("Devolucion de equipo de ingenieria registrada correctamente");
-                System.out.println("Total estudiantes ingenieria registrados: " + vector_ingenieros.size());
-                System.out.println("Total computadores registrados: " + vector_portatil.size());
                 return;
             }
         }
@@ -333,8 +339,6 @@ public class Metodos {
                 }
 
                 System.out.println("Devolucion de equipo de diseño registrada correctamente");
-                System.out.println("Total estudiantes diseño registrados: " + vector_diseñadores.size());
-                System.out.println("Total tabletas registradas: " + vector_tableta.size());
                 return;
             }
         }
@@ -343,11 +347,147 @@ public class Metodos {
     }
 
     public void BuscarEquipoIngenieria() {
-        System.out.println("Buscar equipo ingenieria");
+
+        int opcion = 0;
+
+        System.out.println("BUSCAR EQUIPO INGENIERIA");
+        System.out.println("1. Buscar por cedula");
+        System.out.println("2. Buscar por serial");
+        opcion = sc.nextInt();
+
+        switch (opcion) {
+
+            case 1:
+                System.out.println("Ingrese cedula");
+                BuscarEquipoIngenieria(sc.next());
+                break;
+
+            case 2:
+                System.out.println("Ingrese serial");
+                BuscarEquipoIngenieria(sc.next(), 1);
+                break;
+
+            default:
+                System.out.println("Opcion incorrecta");
+                break;
+        }
+    }
+
+    public void BuscarEquipoIngenieria(String cedula) {
+
+        for (int i = 0; i < vector_ingenieros.size(); i++) {
+
+            EstudianteIngenieria e = (EstudianteIngenieria) vector_ingenieros.get(i);
+
+            if (e.getCedula().equals(cedula)) {
+
+                System.out.println("ESTUDIANTE ENCONTRADO");
+                System.out.println("Cedula: " + e.getCedula());
+                System.out.println("Nombre: " + e.getNombre());
+                System.out.println("Apellido: " + e.getApellido());
+                System.out.println("Telefono: " + e.getTelefono());
+                System.out.println("Semestre: " + e.getNumeroSemestre());
+                System.out.println("Promedio: " + e.getPromedioAcumulado());
+                System.out.println("Serial equipo: " + e.getSerialEquipo());
+                return;
+            }
+        }
+
+        System.out.println("No se encontro estudiante con esa cedula");
+    }
+
+    public void BuscarEquipoIngenieria(String serial, int opcion) {
+
+        for (int i = 0; i < vector_portatil.size(); i++) {
+
+            ComputadorPortatil c = (ComputadorPortatil) vector_portatil.get(i);
+
+            if (c.getSerial().equals(serial)) {
+
+                System.out.println("COMPUTADOR ENCONTRADO");
+                System.out.println("Serial: " + c.getSerial());
+                System.out.println("Marca: " + c.getMarca());
+                System.out.println("Tamaño: " + c.getTamano());
+                System.out.println("Precio: " + c.getPrecio());
+                System.out.println("Sistema operativo: " + c.getSistemaOperativo());
+                System.out.println("Procesador: " + c.getProcesador());
+                return;
+            }
+        }
+
+        System.out.println("No se encontro computador con ese serial");
     }
 
     public void BuscarEquipoDiseño() {
-        System.out.println("Buscar equipo diseño");
+
+        int opcion = 0;
+
+        System.out.println("BUSCAR EQUIPO DISEÑO");
+        System.out.println("1. Buscar por cedula");
+        System.out.println("2. Buscar por serial");
+        opcion = sc.nextInt();
+
+        switch (opcion) {
+
+            case 1:
+                System.out.println("Ingrese cedula");
+                BuscarEquipoDiseño(sc.next());
+                break;
+
+            case 2:
+                System.out.println("Ingrese serial");
+                BuscarEquipoDiseño(sc.nextInt());
+                break;
+
+            default:
+                System.out.println("Opcion incorrecta");
+                break;
+        }
+    }
+
+    public void BuscarEquipoDiseño(String cedula) {
+
+        for (int i = 0; i < vector_diseñadores.size(); i++) {
+
+            EstudianteDiseño e = (EstudianteDiseño) vector_diseñadores.get(i);
+
+            if (e.getCedula().equals(cedula)) {
+
+                System.out.println("ESTUDIANTE ENCONTRADO");
+                System.out.println("Cedula: " + e.getCedula());
+                System.out.println("Nombre: " + e.getNombre());
+                System.out.println("Apellido: " + e.getApellido());
+                System.out.println("Telefono: " + e.getTelefono());
+                System.out.println("Modalidad: " + e.getModalidadEstudio());
+                System.out.println("Cantidad asignaturas: " + e.getCantidadAsignaturas());
+                System.out.println("Serial equipo: " + e.getSerialEquipo());
+                return;
+            }
+        }
+
+        System.out.println("No se encontro estudiante con esa cedula");
+    }
+
+    public void BuscarEquipoDiseño(int serial) {
+
+        for (int i = 0; i < vector_tableta.size(); i++) {
+
+            TabletaGrafica t = (TabletaGrafica) vector_tableta.get(i);
+
+            if (t.getSerial().equals(serial + "")) {
+
+                System.out.println("TABLETA ENCONTRADA");
+                System.out.println("Serial: " + t.getSerial());
+                System.out.println("Marca: " + t.getMarca());
+                System.out.println("Tamaño: " + t.getTamano());
+                System.out.println("Precio: " + t.getPrecio());
+                System.out.println("Almacenamiento: " + t.getAlmacenamiento());
+                System.out.println("Peso: " + t.getPeso());
+                return;
+            }
+        }
+
+        System.out.println("No se encontro tableta con ese serial");
     }
 
     public void ImprimirInventarioTotal() {
@@ -411,5 +551,61 @@ public class Metodos {
             System.out.println("Peso: " + t.getPeso());
             System.out.println("----------------------------");
         }
+    }
+
+    public boolean ExisteCedulaIngenieria(String cedula) {
+
+        for (int i = 0; i < vector_ingenieros.size(); i++) {
+
+            EstudianteIngenieria e = (EstudianteIngenieria) vector_ingenieros.get(i);
+
+            if (e.getCedula().equals(cedula)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean ExisteSerialIngenieria(String serial) {
+
+        for (int i = 0; i < vector_portatil.size(); i++) {
+
+            ComputadorPortatil c = (ComputadorPortatil) vector_portatil.get(i);
+
+            if (c.getSerial().equals(serial)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean ExisteCedulaDiseño(String cedula) {
+
+        for (int i = 0; i < vector_diseñadores.size(); i++) {
+
+            EstudianteDiseño e = (EstudianteDiseño) vector_diseñadores.get(i);
+
+            if (e.getCedula().equals(cedula)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean ExisteSerialDiseño(int serial) {
+
+        for (int i = 0; i < vector_tableta.size(); i++) {
+
+            TabletaGrafica t = (TabletaGrafica) vector_tableta.get(i);
+
+            if (t.getSerial().equals(serial + "")) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
